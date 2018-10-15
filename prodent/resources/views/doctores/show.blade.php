@@ -22,6 +22,20 @@
 		</div>
 	</div>
 
+	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="form-group">
+        <label for="genero_id">genero</label>
+        <input disabled  type="text" name="genero_id" required value="{{$doctor->genero}}" class="form-control" placeholder="Genero...">
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <div class="form-group">
+        <label for="fecha_nac">Fecha de Nacimiento</label>
+        <input disabled type="date" name="fecha_nac" value="{{$doctor->fecha_nac}}" class="form-control">
+      </div>
+    </div>
+
   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
     <div class="form-group">
       <label for="users_id">Usuario</label>

@@ -13,6 +13,10 @@ class Vendedores extends Model
 
   protected $fillable = [
    'nombre',
-   'telefono'
+   'apellido',
+   'correo',
+   'direccion',
+   'telefono',
+   'proveedor_id'
   ];
 }

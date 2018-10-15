@@ -20,11 +20,10 @@ class ProveedoresController extends Controller
       if($request){
   			$query= trim($request->get('searchText'));
   			$proveedores=DB::table('proveedor as pro')
-        ->join('vendedor as ven', 'pro.vendedor_id','=','ven.id')
-  			->select('pro.id','pro.nombre', 'pro.direccion', 'pro.correo','pro.num_cuenta', 'pro.telefono1', 'pro.telefono2', DB::raw("ven.nombre as vendedor"))
+  			->select('pro.id','pro.nombre', 'pro.direccion', 'pro.correo','pro.num_cuenta', 'pro.telefono1', 'pro.telefono2')
   			->where('pro.nombre','LIKE','%'.$query.'%')
   			->orderBy('pro.id','asc')
-  			->groupBy('pro.id','pro.nombre', 'pro.direccion', 'pro.correo','pro.num_cuenta', 'pro.telefono1', 'pro.telefono2', 'ven.nombre')
+  			->groupBy('pro.id','pro.nombre', 'pro.direccion', 'pro.correo','pro.num_cuenta', 'pro.telefono1', 'pro.telefono2')
   			->paginate(7);
 
   			return view('proveedores.index',["proveedores"=>$proveedores,"searchText"=>$query]);
@@ -32,8 +31,7 @@ class ProveedoresController extends Controller
     }
 
     public function create(){
-      $vendedores=DB::table('vendedor')->get();
-      return view("proveedores.create",["vendedores"=>$vendedores]);
+      return view("proveedores.create");
     }
 
   public function store(ProveedoresFormRequest $request /*Request $request*/){
@@ -45,7 +43,6 @@ class ProveedoresController extends Controller
       $proveedor->num_cuenta = $request->get('num_cuenta');
       $proveedor->telefono1 = $request->get('telefono1');
       $proveedor->telefono2 = $request->get('telefono2');
-      $proveedor->vendedor_id = $request->get('vendedor_id');
 
       $proveedor->save();
       return Redirect::to('proveedores/');
@@ -68,7 +65,6 @@ class ProveedoresController extends Controller
     $proveedor->num_cuenta = $request->get('num_cuenta');
     $proveedor->telefono1 = $request->get('telefono1');
     $proveedor->telefono2 = $request->get('telefono2');
-    $proveedor->vendedor_id = $request->get('vendedor_id');
     $proveedor->update();
 
     return Redirect::to('proveedores');

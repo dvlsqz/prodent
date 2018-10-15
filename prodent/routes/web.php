@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 //Rutas modulo de registro
+Route::resource('genero','GenerosController');
 Route::resource('citas','CitasController');
 Route::resource('pacientes','PacientesController');
 Route::resource('medicamentos','MedicamentosController');
@@ -27,7 +28,6 @@ Route::resource('vendedores','VendedoresController');
 Route::resource('tratamientos','TratamientosController');
 Route::resource('doctores','DoctoresController');
 //Rutas modulo de pacientes
-Route::resource('pacientes_info/tipos','TiposController');
 Route::resource('pacientes_info/antecedentes','AntecedentesController');
 Route::resource('pacientes_info/his_citas','HistorialCitasController');
 Route::resource('pacientes_info/his_tratamientos','HistorialTratamientosController');

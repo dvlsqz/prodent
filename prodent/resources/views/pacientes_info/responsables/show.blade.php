@@ -49,7 +49,7 @@
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 			<div class="form-group">
 				<label for="paciente_id">Paciente</label>
-				<input type="text" name="paciente_id" required value="{{$responsable->nombre.' '.$responsable->apellido}}" class="form-control" placeholder="Paciente...">
+				<input type="text" name="paciente_id" required value="{{$responsable->nombre_paciente.' '.$responsable->apellido_paciente}}" class="form-control" placeholder="Paciente...">
 			</div>
 		</div>
 

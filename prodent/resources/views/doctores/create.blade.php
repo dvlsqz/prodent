@@ -44,6 +44,24 @@
 
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
+						<label for="users_id">Genero </label>
+						<select data-live-search="true" name="genero_id" id="genero_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
+							@foreach($generos as $gen)
+								<option value="{{$gen->id}}">{{$gen->genero}}</option>
+							@endforeach
+						</select>
+					</div>
+				</div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    			<div class="form-group">
+    				<label for="fecha_nac">Fecha de Nacimiento</label>
+    				<input type="date" name="fecha_nac" value="{{old('fecha_nac')}}" class="form-control">
+    			</div>
+    		</div>
+
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
 						<label for="users_id">Usuario </label>
 						<select data-live-search="true" name="users_id" id="users_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($users as $use)

@@ -26,9 +26,12 @@ class TratamientosFormRequest extends FormRequest
         return [
           'nombre'=> 'required|string|max:100',
           'tipo'=> 'required|string|max:45',
-          'detalle' => 'required|text',
+          'detalle' => 'required|string|max:300',
+          'fecha_inicio',
+          'fecha_fin',
           'precio',
-          'receta_id'
+          'estado'
+          'paciente_id'
         ];
     }
 }

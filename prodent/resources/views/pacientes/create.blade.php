@@ -35,15 +35,16 @@
 					</div>
 				</div>
 
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-          <div class="form-group">
-            <label for="genero" >Genero</label>
-              <select name="genero" class="form-control">
-                <option value="Masculino">Masculino</option>
-                <option value="Femenino">Femenino</option>
-              </select>
-          </div>
-        </div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="users_id">Genero </label>
+						<select data-live-search="true" name="genero_id" id="genero_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
+							@foreach($generos as $gen)
+								<option value="{{$gen->id}}">{{$gen->genero}}</option>
+							@endforeach
+						</select>
+					</div>
+				</div>
 
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
     			<div class="form-group">

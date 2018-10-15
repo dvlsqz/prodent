@@ -24,8 +24,8 @@ class AntecedentesFormRequest extends FormRequest
     public function rules()
     {
         return [
-          'detalles',
-          'tipo_id',
+          'descripcion',
+          'tipo',
           'paciente_id',
         ];
     }

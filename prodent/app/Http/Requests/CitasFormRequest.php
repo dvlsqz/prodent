@@ -13,7 +13,7 @@ class CitasFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class CitasFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+          'fecha_registro',
+          'fecha_cita',
+          'hora',
+          'detalles' => 'required|string|max:350',
+          'estado' => 'string|max:45',
+          'doctor_id'
         ];
     }
 }

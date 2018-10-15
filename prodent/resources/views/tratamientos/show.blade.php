@@ -30,12 +30,34 @@
 				</div>
 			</div>
 
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<div class="form-group">
-				<label for="receta">Receta</label>
-				<input type="text" name="receta" value="{{$receta->id}}" class="form-control" placeholder="Receta...">
-			</div>
-		</div>
+
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label for="fecha_inicio">Fecha de Inicio</label>
+										<input type="date" name="fecha_inicio" value="{{$tratamiento->fecha_inicio}}" class="form-control">
+									</div>
+								</div>
+
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label for="fecha_fin">Fecha de Fin</label>
+										<input type="date" name="fecha_fin" value="{{$tratamiento->fecha_fin}}" class="form-control">
+									</div>
+								</div>
+
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+										<div class="form-group">
+											<label for="estado">Estado</label>
+											<input type="text" name="estado" required value="{{$tratamiento->estado}}" class="form-control" placeholder="Estado...">
+										</div>
+								</div>
+
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label for="paciente_id">Paciente</label>
+										<input type="text" name="paciente_id" required value="{{$responsable->nombre_paciente.' '.$responsable->apellido_paciente}}" class="form-control" placeholder="Paciente...">
+									</div>
+								</div>
 
 
   </div>

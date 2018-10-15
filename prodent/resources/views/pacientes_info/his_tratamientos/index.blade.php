@@ -12,25 +12,15 @@
 		<div class="table-responsive">
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
-					<th>Fecha Inicio</th>
-					<th>Fecha Culminacion</th>
-					<th>Abono</th>
-					<th>Estado</th>
-					<th>Detalle</th>
-					<th>Paciente</th>
+					<th>Fecha</th>
 					<th>Tratamiento</th>
 					<th>Opciones</th>
 				</thead>
 
         @foreach($historiales as $hist)
 					<tr>
-						<td>{{$hist->fecha_inicio}}</td>
-						<td>{{$hist->fecha_culminacion}}</td>
-						<td>{{$hist->abono}}</td>
-						<td>{{$hist->estado}}</td>
-						<td>{{$hist->detalle}}</td>
-						<td>{{$hist->nombre.''.$hisc->apellido}}</td>
-						<td>{{$hist->nombre}}</td>
+						<td>{{$hist->fecha}}</td>
+						<td>{{$hist->tratamiento}}</td>
 						<td>
 							<a href="{{URL::action('HistorialTratamientosController@edit',$hist->id)}}">
 								<button class="btn btn-info btn-large icon-edit" title="Editar"></button>

@@ -12,12 +12,8 @@ class HistorialTratamientos extends Model
   public $timestamps =false;
 
   protected $fillable = [
-    'fecha_inicio',
-    'fecha_culminacion',
-    'abono',
-    'estado',
+    'fecha',
     'detalles',
-    'paciente_id',
     'tratamiento_id'
   ];
 }

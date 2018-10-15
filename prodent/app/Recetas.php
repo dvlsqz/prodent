@@ -12,7 +12,6 @@ class Recetas extends Model
   public $timestamps =false;
 
   protected $fillable = [
-    'prescripción',
     'indicaciones',
     'fecha',
     'paciente_id',

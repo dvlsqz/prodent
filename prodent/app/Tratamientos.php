@@ -15,7 +15,10 @@ class Tratamientos extends Model
     'nombre',
     'tipo',
     'detalle',
+    'fecha_inicio',
+    'fecha_fin',
     'precio',
-    'receta_id'
+    'estado',
+    'paciente_id'
   ];
 }

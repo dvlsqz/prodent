@@ -21,21 +21,11 @@
 			<div class="row">
 
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
-					<div class="form-group">
-						<label for="prescripción">Prescripción</label>
-						<input type="text" name="prescripción" required value="{{old('prescripción')}}" class="form-control" placeholder="Prescripción...">
-					</div>
-				</div>
-
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="indicaciones">Indicaciones</label>
 						<input type="text" name="indicaciones" value="{{old('indicaciones')}}" class="form-control" placeholder="Indicaciones...">
 					</div>
 				</div>
-
-
 
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
     			<div class="form-group">

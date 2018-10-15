@@ -27,7 +27,9 @@ class DoctoresFormRequest extends FormRequest
           'nombre' => 'required|string|max:255',
           'apellido' => 'required|string|max:255',
           'direccion' => 'required|string|max:255',
+          'fecha_nac',
           'users_id',
+          'genero_id',
         ];
     }
 }

@@ -75,27 +75,8 @@
 					</div>
 				</div>
 
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-          <div class="form-group">
-            <label for="estado" >Estado</label>
-              <select name="estado" class="form-control">
-                <option value="1">1</option>
-                <option value="0">0</option>
-              </select>
-          </div>
-				</div>
 
 
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="proveedor_id">Proveedor </label>
-						<select data-live-search="true" name="proveedor_id" id="proveedor_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
-							@foreach($proveedores as $pro)
-								<option value="{{$pro->id}}">{{$pro->nombre}}</option>
-							@endforeach
-						</select>
-					</div>
-				</div>
 
 			</div>
 

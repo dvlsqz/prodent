@@ -20,10 +20,10 @@ class VendedoresController extends Controller
     if($request){
       $query= trim($request->get('searchText'));
       $vendedores=DB::table('vendedor as ven')
-      ->select('ven.id','ven.nombre', 'ven.telefono')
+      ->join('proveedor as pro', 'ven.proveedor_id','=','pro.id')
+      ->select('ven.id','ven.nombre' ,'ven.apellido','ven.correo','ven.direccion', 'ven.telefono', DB::raw("pro.nombre as proveedor"))
       ->where('ven.nombre','LIKE','%'.$query.'%')
       ->orderBy('ven.id','asc')
-      ->groupBy('ven.id','ven.nombre', 'ven.telefono')
       ->paginate(7);
 
       return view('vendedores.index',["vendedores"=>$vendedores,"searchText"=>$query]);
@@ -31,34 +31,47 @@ class VendedoresController extends Controller
   }
 
   public function create(){
-    $vendedores=DB::table('vendedor')->get();
-    return view("vendedores.create",["vendedor"=>$vendedores]);
+    $proveedores=DB::table('proveedor')->get();
+    return view("vendedores.create",["proveedores"=>$proveedores]);
   }
 
 public function store(VendedoresFormRequest $request /*Request $request*/){
     $vendedor= new Vendedores;
     $vendedor->id = $request->get('id');
     $vendedor->nombre = $request->get('nombre');
+    $vendedor->apellido = $request->get('apellido');
+    $vendedor->correo = $request->get('correo');
+    $vendedor->direccion = $request->get('direccion');
     $vendedor->telefono = $request->get('telefono');
+    $vendedor->proveedor_id = $request->get('proveedor_id');
 
     $vendedor->save();
     return Redirect::to('vendedores/');
   }
 
   public function show($id){
+    $vendedores=DB::table('vendedor as ven')
+      ->join('proveedor as pro', 'ven.proveedor_id','=','pro.id')
+    ->select('ven.id','ven.nombre', 'ven.apellido','ven.correo','ven.direccion', 'ven.telefono', DB::raw("pro.nombre as proveedor"))
+    ->where('ven.id','=',$id)->first();
     return view("vendedores.show",["vendedor"=>Vendedores::findOrFail($id)]);
   }
 
   public function edit($id){
-    return view("vendedores.edit",["vendedor"=>Vendedores::findOrFail($id)]);
+    $proveedores=DB::table('proveedor')->get();
+    return view("vendedores.edit",["vendedor"=>Vendedores::findOrFail($id),"proveedores"=>$proveedores]);
   }
 
   public function update(VendedoresFormRequest $request, $id){
 
   $vendedor=Vendedores::findOrFail($id);
   $vendedor->nombre = $request->get('nombre');
+  $vendedor->apellido = $request->get('apellido');
+  $vendedor->correo = $request->get('correo');
+  $vendedor->direccion = $request->get('direccion');
   $vendedor->telefono = $request->get('telefono');
-  $paciente->update();
+  $vendedor->proveedor_id = $request->get('proveedor_id');
+  $vendedor->update();
 
   return Redirect::to('vendedores');
 }

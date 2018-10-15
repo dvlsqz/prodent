@@ -15,6 +15,7 @@
 					<th>Nombre</th>
 					<th>Tipo</th>
 					<th>Detalle</th>
+					<th>Paciente</th>
 					<th>Precio</th>
 					<th>Opciones</th>
 				</thead>
@@ -24,6 +25,7 @@
             <td>{{$tra->nombre}}</td>
 						<td>{{$tra->tipo}}</td>
 						<td>{{$tra->detalle}}</td>
+						<td>{{$tra->nombre_paciente.' '.$$tra->apellido_paciente}}</td>
 						<td>{{$tra->precio}}</td>
 						<td>
 							<a href="{{URL::action('TratamientosController@edit',$tra->id)}}">

@@ -1,5 +1,5 @@
 <div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1" id="modal-delete-{{$tra->id}}">
-	{{!!Form::open(array('action'=>array('TratamientosControllerr@destroy',$tra->id),'method'=>'delete'))!!}}
+	{{!!Form::open(array('action'=>array('TratamientosController@destroy',$tra->id),'method'=>'delete'))!!}}
 
 	<div class="modal-dialog">
 		<div class="modal-content">

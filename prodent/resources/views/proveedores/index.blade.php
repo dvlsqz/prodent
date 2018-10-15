@@ -17,7 +17,6 @@
 					<th>Correo Electronico</th>
 					<th>No. Cuenta</th>
 					<th>Telefonos</th>
-					<th>Vendedor</th>
 					<th>Opciones</th>
 				</thead>
 
@@ -28,7 +27,6 @@
 						<td>{{$pro->correo}}</td>
 						<td>{{$pro->num_cuenta}}</td>
 						<td>{{$pro->telefono1.'/'.$pro->telefono2}}</td>
-						<td>{{$pro->vendedor}}</td>
 						<td>
 							<a href="{{URL::action('ProveedoresController@edit',$pro->id)}}">
 								<button class="btn btn-info">Editar</button>
@@ -38,7 +36,7 @@
 								<button class="btn btn-primary">Ver</button>
 							</a>
 
-							<a href="" data-target="#modal-delete-{{$pro->id}}" data-toggle="modal">
+							<a href="" data-target="#modal-delete-{{$pro->id}}" data-toggle="modal" >
 								<button class="btn btn-danger">Eliminar</button>
 							</a>
 						</td>

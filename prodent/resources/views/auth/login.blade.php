@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Clinica Prodent</title>
+    <title>Clinica SProdent</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +34,7 @@
 			</a>
 
 			<a class="brand" href="index.html">
-				Clinica PRODENT
+				Clinica SProdent
 			</a>
 
 			<div class="nav-collapse">
@@ -42,7 +42,7 @@
 
 					<li class="">
 						<a href="signup.html" class="">
-							Don't have an account?
+							No tiene una cuenta?
 						</a>
 
 					</li>
@@ -50,7 +50,7 @@
 					<li class="">
 						<a href="index.html" class="">
 							<i class="icon-chevron-left"></i>
-							Back to Homepage
+							Regresar al Inicio
 						</a>
 
 					</li>

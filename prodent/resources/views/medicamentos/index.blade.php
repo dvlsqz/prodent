@@ -17,7 +17,6 @@
 					<th>Fecha Caducidad</th>
 					<th>Stock</th>
 					<th>Presentacion</th>
-					<th>Proveedor</th>
 					<th>Estado</th>
 					<th>Opciones</th>
 				</thead>
@@ -29,7 +28,6 @@
 						<td>{{$med->fecha_cad}}</td>
 						<td>{{$med->stock}}</td>
 						<td>{{$med->presentacion}}</td>
-						<td>{{$med->proveedor}}</td>
 						<td>{{$med->estado}}</td>
 						<td>
 							<a href="{{URL::action('MedicamentosController@edit',$med->id)}}">

@@ -2,19 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>PRODENT</title>
+<title>Clinica SProdent</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 
+<link rel="shortcut icon" href="imagenes/medical-24_icon-icons.com_73920.ico" />
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="{{asset('css/calendar.css')}}">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<script type="text/javascript" src="{{asset('js/calendario/es-ES.js')}}"></script>
-<script src="{{asset('js/calendario/jquery.min.js')}}"></script>
-<script src="{{asset('js/calendario/moment.js')}}"></script>
-<script src="{{asset('js/calendario/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/calendario/bootstrap-datetimepicker.js')}}"></script>
-<link rel="stylesheet" href="{{asset('css/bootstrap-datetimepicker.min.css')}}" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
 <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 <link href="{{asset('css/bootstrap-responsive.min.css')}}" rel="stylesheet">
@@ -23,8 +20,13 @@
 <link href="{{asset('css/style.css')}}" rel="stylesheet">
 <link href="{{asset('css/pages/dashboard.css')}}" rel="stylesheet">
 <script src="{{asset('js/bootstrap.js')}}"></script>
+<script src="{{asset('js/jquery-1.7.2.min.js')}}"></script>
+<script src="{{asset('js/excanvas.min.js')}}"></script>
+<script src="{{asset('js/chart.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/bootstrap.js')}}"></script>
+<script language="javascript" type="text/javascript" src="{{asset('js/full-calendar/fullcalendar.min.js')}}"></script>
 
-
+<script src="{{asset('js/base.js')}}"></script>
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -35,7 +37,7 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">CLINICA PRODENT <?php echo date('l jS \of F Y h:i:s A');?></a>
+                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">Clinica SProdent <?php echo date('l jS \of F Y h:i:s A');?></a>
       <div class="nav-collapse">
         <ul class="nav pull-right">
           <!--<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
@@ -91,7 +93,6 @@
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i><span>PACIENTES</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="{{url('pacientes_info/antecedentes')}}">ANTECEDENTES</a></li>
-            <li><a href="{{url('pacientes_info/tipos')}}">TIPO</a></li>
             <li><a href="{{url('pacientes_info/his_citas')}}">HISTORIAL CITAS</a></li>
             <li><a href="{{url('pacientes_info/his_tratamientos')}}">HISTORIAL TRATAMIENTOS</a></li>
             <li><a href="{{url('pacientes_info/responsables')}}">RESPONSABLE</a></li>
@@ -107,8 +108,6 @@
         <li><a href="{{url('recetas/')}}"><i class="icon-file"></i><span>RECETAS</span> </a> </li>
         <li><a href="{{url('pagos/')}}"><i class="icon-list-alt"></i><span>PAGOS</span> </a> </li>
         <li><a href="{{url('reportes/')}}"><i class="icon-bar-chart"></i><span>REPORTES</span> </a> </li>
-        <li><a href="{{url('usuarios/')}}"><i class="icon-lock"></i><span>ACCESOS</span> </a> </li>
-
 
       </ul>
     </div>

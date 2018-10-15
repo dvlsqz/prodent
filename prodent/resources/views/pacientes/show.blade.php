@@ -19,8 +19,8 @@
 
   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
       <div class="form-group">
-        <label for="genero">genero</label>
-        <input disabled  type="text" name="genero" required value="{{$paciente->genero}}" class="form-control" placeholder="Genero...">
+        <label for="genero_id">genero</label>
+        <input disabled  type="text" name="genero_id" required value="{{$paciente->genero}}" class="form-control" placeholder="Genero...">
       </div>
     </div>
 
@@ -44,6 +44,13 @@
       <input disabled type="text" name="telefono" value="{{$paciente->telefono}}" class="form-control" placeholder="Telefono...">
     </div>
   </div>
+
+	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+		<div class="form-group">
+			<label for="fecha_registro">Fecha de Registro</label>
+			<input disabled type="date" name="fecha_registro" value="{{$paciente->fecha_registro}}" class="form-control">
+		</div>
+	</div>
 
   </div>
 

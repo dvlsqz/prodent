@@ -24,8 +24,13 @@ class VendedoresFormRequest extends FormRequest
     public function rules()
     {
       return [
-        'nombre' => 'required|string|max:255',
-        'telefono' => 'required|string|max:15',
+        'nombre'=> 'required|string|max:255',
+        'apellido'=> 'required|string|max:255',
+        'correo'=> 'required|string|max:255',
+        'direccion'=> 'required|string|max:255',
+        'telefono'=> 'required|string|max:15',
+        'proveedor_id'
+
       ];
     }
 }

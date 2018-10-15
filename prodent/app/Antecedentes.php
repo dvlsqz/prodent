@@ -12,8 +12,8 @@ class Antecedentes extends Model
   public $timestamps =false;
 
   protected $fillable = [
-    'detalles',
-    'tipo_id',
+    'descripcion',
+    'tipo',
     'paciente_id'
   ];
 }

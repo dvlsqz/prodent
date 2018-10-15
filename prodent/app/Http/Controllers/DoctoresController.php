@@ -21,10 +21,10 @@ class DoctoresController extends Controller
       $query= trim($request->get('searchText'));
       $doctores=DB::table('doctor as doc')
       ->join('users as use', 'doc.users_id','=','use.id')
-      ->select('doc.id','doc.nombre','doc.apellido', 'doc.direccion','use.email')
+      ->join('genero as gen', 'doc.genero_id','=','gen.id')
+      ->select('doc.id','doc.nombre','doc.apellido','doc.fecha_nac','doc.genero_id','doc.direccion','use.email', DB::raw('gen.genero as genero'))
       ->where('doc.nombre','LIKE','%'.$query.'%')
       ->orderBy('doc.id','asc')
-      ->groupBy('doc.id','doc.nombre','doc.apellido', 'doc.direccion','use.email')
       ->paginate(7);
 
       return view('doctores.index',["doctores"=>$doctores,"searchText"=>$query]);
@@ -33,7 +33,8 @@ class DoctoresController extends Controller
 
   public function create(){
     $users=DB::table('users')->get();
-    return view("doctores.create",["users"=>$users]);
+    $generos=DB::table('genero')->get();
+    return view("doctores.create",["users"=>$users,"generos"=>$generos]);
   }
 
   public function store(DoctoresFormRequest $request /*Request $request*/){
@@ -42,6 +43,8 @@ class DoctoresController extends Controller
     $doctor->nombre = $request->get('nombre');
     $doctor->apellido = $request->get('apellido');
     $doctor->direccion = $request->get('direccion');
+    $doctor->fecha_nac = $request->get('fecha_nac');
+    $doctor->genero_id = $request->get('genero_id');
     $doctor->users_id = $request->get('users_id');
 
     $doctor->save();
@@ -49,11 +52,18 @@ class DoctoresController extends Controller
   }
 
   public function show($id){
+    $doctor=DB::table('doctor as doc')
+    ->join('users as use', 'doc.users_id','=','use.id')
+    ->join('genero as gen', 'doc.genero_id','=','gen.id')
+    ->select('doc.id','doc.nombre','doc.apellido','doc.fecha_nac','doc.genero_id','doc.direccion','use.email', DB::raw('gen.genero as genero'))
+    ->where('doc.id','=',$id)->first();
     return view("doctores.show",["doctor"=>Doctores::findOrFail($id)]);
   }
 
   public function edit($id){
-    return view("doctores.edit",["doctor"=>Doctores::findOrFail($id)]);
+    $users=DB::table('users')->get();
+    $generos=DB::table('genero')->get();
+    return view("doctores.edit",["doctor"=>Doctores::findOrFail($id),"users"=>$users,"generos"=>$generos]);
   }
 
   public function update(DoctoresFormRequest $request, $id){
@@ -62,6 +72,8 @@ class DoctoresController extends Controller
     $doctor->nombre = $request->get('nombre');
     $doctor->apellido = $request->get('apellido');
     $doctor->direccion = $request->get('direccion');
+    $doctor->fecha_nac = $request->get('fecha_nac');
+    $doctor->genero_id = $request->get('genero_id');
     $doctor->users_id = $request->get('users_id');
     $doctor->update();
 

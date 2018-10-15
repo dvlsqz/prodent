@@ -20,8 +20,7 @@ class MedicamentosController extends Controller
       if($request){
         $query= trim($request->get('searchText'));
         $medicamentos=DB::table('medicamento as med')
-        ->join('proveedor as pro', 'med.proveedor_id','=','pro.id')
-        ->select('med.id','med.codigo','med.nombre', 'med.fecha_cad', 'med.stock','med.stock_minimo', 'med.presentacion', 'med.precio_costo','med.precio_venta','med.estado',DB::raw("pro.nombre as proveedor"))
+        ->select('med.id','med.codigo','med.nombre', 'med.fecha_cad', 'med.stock','med.stock_minimo', 'med.presentacion', 'med.precio_costo','med.precio_venta','med.estado')
         ->where('med.nombre','LIKE','%'.$query.'%')
         ->orderBy('med.id','asc')
         ->paginate(7);
@@ -31,8 +30,7 @@ class MedicamentosController extends Controller
     }
 
     public function create(){
-      $proveedores=DB::table('proveedor')->get();
-      return view("medicamentos.create",["proveedores"=>$proveedores]);
+      return view("medicamentos.create");
     }
 
     public function store(MedicamentosFormRequest $request /*Request $request*/){
@@ -46,8 +44,7 @@ class MedicamentosController extends Controller
       $medicamento->presentacion = $request->get('presentacion');
       $medicamento->precio_costo = $request->get('precio_costo');
       $medicamento->precio_venta = $request->get('precio_venta');
-      $medicamento->estado = $request->get('estado');
-      $medicamento->proveedor_id = $request->get('proveedor_id');
+      $medicamento->estado = "Activo";
 
       $medicamento->save();
       return Redirect::to('medicamentos/');
@@ -73,7 +70,6 @@ class MedicamentosController extends Controller
       $medicamento->precio_costo = $request->get('precio_costo');
       $medicamento->precio_venta = $request->get('precio_venta');
       $medicamento->estado = $request->get('estado');
-      $medicamento->proveedor_id = $request->get('proveedor_id');
       $medicamento->update();
 
       return Redirect::to('medicamentos');

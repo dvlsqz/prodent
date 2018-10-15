@@ -15,9 +15,10 @@ class Responsables extends Model
     'nombre',
     'apellido',
     'parentesco',
-    'edad',
+    'fecha_nac',
     'direccion',
     'telefono',
-    'paciente_id'
+    'paciente_id',
+    'genero_id'
   ];
 }

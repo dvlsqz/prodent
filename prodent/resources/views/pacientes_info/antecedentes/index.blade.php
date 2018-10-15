@@ -12,7 +12,7 @@
 		<div class="table-responsive">
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
-					<th>Detalle</th>
+					<th>Descripcion</th>
 					<th>Paciente</th>
 					<th>Tipo</th>
 					<th>Opciones</th>
@@ -20,7 +20,7 @@
 
         @foreach($antecedentes as $ant)
 					<tr>
-						<td>{{$ant->detalles}}</td>
+						<td>{{$ant->descripcion}}</td>
 						<td>{{$ant->nombre.' '.$ant->apellido}}</td>
 						<td>{{$ant->tipo}}</td>
 						<td>

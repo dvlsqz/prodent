@@ -20,11 +20,10 @@ class TratamientosController extends Controller
     if($request){
       $query= trim($request->get('searchText'));
       $tratamientos=DB::table('tratamiento as tra')
-      ->join('receta as rec', 'tra.receta_id','=','rec.id')
-      ->select('tra.id','tra.nombre', 'tra.tipo', 'tra.detalle','tra.precio','rec.id')
+      ->join('paciente as pac', 'tra.paciente_id','=','pac.id')
+      ->select('tra.id','tra.nombre', 'tra.tipo', 'tra.detalle','tra.fecha_inicio','tra.fecha_fin','tra.precio','tra.estado',DB::raw('pac.nombre as nombre_paciente'),DB::raw('pac.apellido as apellido_paciente'))
       ->where('tra.nombre','LIKE','%'.$query.'%')
       ->orderBy('tra.id','asc')
-      ->groupBy('tra.id','tra.nombre', 'tra.tipo', 'tra.detalle','tra.precio','rec.id')
       ->paginate(7);
 
       return view('tratamientos.index',["tratamientos"=>$tratamientos,"searchText"=>$query]);
@@ -32,39 +31,50 @@ class TratamientosController extends Controller
   }
 
   public function create(){
-    $recetas=DB::table('receta')->get();
-    return view("tratamientos.create",["recetas"=>$recetas]);
+    $pacientes=DB::table('paciente')->get();
+    return view("tratamientos.create",["pacientes"=>$pacientes]);
   }
 
-public function store(ProveedoresFormRequest $request /*Request $request*/){
+public function store(TratamientosFormRequest $request /*Request $request*/){
     $tratamiento= new Tratamientos;
     $tratamiento->id = $request->get('id');
     $tratamiento->nombre = $request->get('nombre');
     $tratamiento->tipo = $request->get('tipo');
     $tratamiento->detalle = $request->get('detalle');
+    $tratamiento->fecha_inicio= $request->get('fecha_inicio');
+    $tratamiento->fecha_fin = $request->get('fecha_fin');
     $tratamiento->precio = $request->get('precio');
-    $tratamiento->receta_id = $request->get('receta_id');
+    $tratamiento->estado = $request->get('estado');
+    $tratamiento->paciente_id = $request->get('paciente_id');
 
     $tratamiento->save();
     return Redirect::to('tratamientos/');
   }
 
   public function show($id){
+    $tratamiento = DB::table('tratamiento as tra')
+    ->join('paciente as pac', 'tra.paciente_id','=','pac.id')
+    ->select('tra.id','tra.nombre', 'tra.tipo', 'tra.detalle','tra.fecha_inicio','tra.fecha_fin','tra.precio','tra.estado',DB::raw('pac.nombre as nombre_paciente'),DB::raw('pac.apellido as apellido_paciente'))
+    ->where('pac.id','=',$id)->first();
     return view("tratamientos.show",["tratamiento"=>Tratamientos::findOrFail($id)]);
   }
 
   public function edit($id){
-    return view("tratamientos.edit",["tratamiento"=>Tratamientos::findOrFail($id)]);
+    $pacientes=DB::table('paciente')->get();
+    return view("tratamientos.edit",["tratamiento"=>Tratamientos::findOrFail($id),"pacientes"=>$pacientes]);
   }
 
-  public function update(ProveedoresFormRequest $request, $id){
+  public function update(TratamientosFormRequest $request, $id){
 
   $tratamiento=Tratamientos::findOrFail($id);
   $tratamiento->nombre = $request->get('nombre');
   $tratamiento->tipo = $request->get('tipo');
   $tratamiento->detalle = $request->get('detalle');
+  $tratamiento->fecha_inicio= $request->get('fecha_inicio');
+  $tratamiento->fecha_fin = $request->get('fecha_fin');
   $tratamiento->precio = $request->get('precio');
-  $tratamiento->receta_id = $request->get('receta_id');
+  $tratamiento->estado = $request->get('estado');
+  $tratamiento->paciente_id = $request->get('paciente_id');
   $tratamiento->update();
 
   return Redirect::to('tratamientos');

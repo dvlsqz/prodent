@@ -21,47 +21,15 @@
 
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
     			<div class="form-group">
-    				<label for="fecha_inicio">Fecha Inicio</label>
-    				<input type="date" name="fecha_inicio" value="{{$historial->fecha_inicio}}" class="form-control">
+    				<label for="fecha">Fecha</label>
+    				<input type="date" name="fecha" value="{{$historial->fecha}}" class="form-control">
     			</div>
     		</div>
-
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-    			<div class="form-group">
-    				<label for="fecha_culminacion">Fecha Culminacion</label>
-    				<input type="date" name="fecha_culminacion" value="{{$historial->fecha_culminacion}}" class="form-control">
-    			</div>
-    		</div>
-
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="abono">Abono</label>
-						<input type="numbre" name="abono" required value="{{$historial->abono}}" class="form-control" placeholder="Abono...">
-					</div>
-				</div>
-
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="estado">Estado</label>
-						<input type="text" name="estado" required value="{{$historial->estado}}" class="form-control" placeholder="Estado...">
-					</div>
-				</div>
 
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="detalles">Detalle</label>
 						<input type="text" name="detalle" required value="{{$historial->detalles}}" class="form-control" placeholder="Detalle...">
-					</div>
-				</div>
-
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="paciente_id">Paciente </label>
-						<select data-live-search="true" name="paciente_id" id="paciente_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
-							@foreach($pacientes as $pac)
-								<option value="{{$pac->id}}">{{$pac->nombre.' '.$pac->apellido}}</option>
-							@endforeach
-						</select>
 					</div>
 				</div>
 

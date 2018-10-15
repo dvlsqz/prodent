@@ -22,31 +22,31 @@
 
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="detalle">Detalle</label>
-						<input type="text" name="detalles" required value="{{old('detalles')}}" class="form-control" placeholder="Detalle...">
+						<label for="tipo">Tipo</label>
+						<input type="text" name="tipo" required value="{{old('tipo')}}" class="form-control" placeholder="tipo...">
 					</div>
 				</div>
+
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label for="descripcion">Descripcion</label>
+						<input type="text" name="descripcion" required value="{{old('descripcion')}}" class="form-control" placeholder="Descripcion...">
+					</div>
+				</div>
+
 
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="paciente_id">Paciente </label>
 						<select data-live-search="true" name="paciente_id" id="paciente_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($pacientes as $pac)
-								<option value="{{$pac->id}}">{{$pac->nombre.''.$pac->apellido}}</option>
+								<option value="{{$pac->id}}">{{$pac->nombre.' '.$pac->apellido}}</option>
 							@endforeach
 						</select>
 					</div>
 				</div>
 
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="tipo_id">Tipo </label>
-						<select data-live-search="true" name="tipo_id" id="tipo_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
-							@foreach($tipos as $tip)
-								<option value="{{$tip->id}}">{{$tip->tipo}}</option>
-							@endforeach
-						</select>
-					</div>
+
 				</div>
 
 

@@ -26,7 +26,7 @@
 						<td>{{$res->direccion}}</td>
 						<td>{{$res->telefono}}</td>
 						<td>{{$res->parentesco}}</td>
-						<td>{{$res->nombre.' '.$res->apellido}}</td>
+						<td>{{$res->nombre_paciente.' '.$res->apellido_paciente}}</td>
 						<td>
 							<a href="{{URL::action('ResponsablesController@edit',$res->id)}}">
 								<button class="btn btn-info btn-large icon-edit"></button>

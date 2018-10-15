@@ -61,17 +61,6 @@
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<div class="form-group">
-								<label for="vendedor_id">Vendedor </label>
-								<select data-live-search="true" name="vendedor_id" id="vendedor_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
-									@foreach($vendedores as $ven)
-										<option value="{{$ven->id}}">{{$ven->nombre}}</option>
-									@endforeach
-								</select>
-						</div>
-					</div>
 
 			</div>
 

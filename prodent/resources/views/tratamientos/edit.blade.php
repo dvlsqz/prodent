@@ -48,10 +48,31 @@
 
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 						<div class="form-group">
-							<label for="receta_id">Receta </label>
-							<select data-live-search="true" name="receta_id" id="receta_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
-								@foreach($recetas as $rec)
-									<option value="{{$rec->id}}">{{$rec->prescripción}}</option>
+							<label for="fecha_inicio">Fecha de Inicio</label>
+							<input type="date" name="fecha_inicio" value="{{$tratamiento->fecha_inicio}}" class="form-control">
+						</div>
+					</div>
+
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="form-group">
+							<label for="fecha_fin">Fecha de Fin</label>
+							<input type="date" name="fecha_fin" value="{{$tratamiento->fecha_fin}}" class="form-control">
+						</div>
+					</div>
+
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+							<div class="form-group">
+								<label for="estado">Estado</label>
+								<input type="text" name="estado" required value="{{$tratamiento->estado}}" class="form-control" placeholder="Estado...">
+							</div>
+					</div>
+
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+						<div class="form-group">
+							<label for="paciente_id">Paciente </label>
+							<select data-live-search="true" name="paciente_id" id="paciente_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
+								@foreach($pacientes as $pac)
+									<option value="{{$pac->id}}">{{$pac->nombre.' '.$pac->apellido}}</option>
 								@endforeach
 							</select>
 						</div>

@@ -32,8 +32,7 @@ class MedicamentosFormRequest extends FormRequest
         'presentacion'=> 'required|string|max:255',
         'precio_costo',
         'precio_venta',
-        'estado',
-        'proveedor_id'
+        'estado' => 'string|max:10'
       ];
     }
 }

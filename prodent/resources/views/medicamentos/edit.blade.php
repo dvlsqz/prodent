@@ -42,14 +42,14 @@
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="stock">Stock</label>
-						<input type="number" name="stock" required value="{{$medicamento->stock}}" class="form-control" placeholder="Stock...">
+						<input disabled type="number" name="stock" required value="{{$medicamento->stock}}" class="form-control" placeholder="Stock...">
 					</div>
 				</div>
 
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
 						<label for="stock_minimo">Stock Minimo</label>
-						<input type="number" name="stock" required value="{{$medicamento->stock_minimo}}" class="form-control" placeholder="Stock Minimo...">
+						<input disabled type="number" name="stock_minimo" required value="{{$medicamento->stock_minimo}}" class="form-control" placeholder="Stock Minimo...">
 					</div>
 				</div>
 
@@ -85,16 +85,6 @@
 				</div>
 
 
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-					<div class="form-group">
-						<label for="proveedor_id">Proveedor </label>
-						<select data-live-search="true" name="proveedor_id" id="proveedor_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
-							@foreach($proveedores as $pro)
-								<option value="{{$pro->id}}">{{$pro->nombre}}</option>
-							@endforeach
-						</select>
-					</div>
-				</div>
 
 			</div>
 

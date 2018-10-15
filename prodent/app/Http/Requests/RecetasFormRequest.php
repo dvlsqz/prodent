@@ -24,7 +24,6 @@ class RecetasFormRequest extends FormRequest
     public function rules()
     {
       return [
-        'prescripción' => 'required|string|max:255',
         'indicaciones' => 'required|string|max:255',
         'fecha',
         'paciente_id',

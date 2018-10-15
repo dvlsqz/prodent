@@ -30,7 +30,7 @@
 								<button class="btn btn-primary">Ver</button>
 							</a>
 
-							<a href="" data-target="#modal-delete-{{$ven->id}}" data-toggle="modal">
+							<a href="" data-target="#modal-delete-{{$ven->id}}" data-toggle="modal" data-target="#myModal">
 								<button class="btn btn-danger">Eliminar</button>
 							</a>
 						</td>

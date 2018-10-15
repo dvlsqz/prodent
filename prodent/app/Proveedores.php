@@ -17,7 +17,6 @@ class Proveedores extends Model
     'correo',
     'num_cuenta',
     'telefono1',
-    'telefono2',
-    'vendedor_id'
+    'telefono2'
   ];
 }

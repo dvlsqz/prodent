@@ -2,7 +2,7 @@
 @section('contenido')
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Editar Proveedor: {{$proveedor->nombre}}</h3>
+			<h3>Editar Receta: {{$receta->fecha}} del Paciente {{$receta->nombre_paciente.' '.$receta->apellido_paciente}} </h3>
 			@if(count($errors)>0)
 			<div class="alert alert-danger">
 				<ul>
@@ -15,63 +15,63 @@
 		</div>
 	</div>
 
-			{!!Form::model($proveedor,['method'=>'PATCH','route'=>['proveedores.update',$proveedor->id]])!!}
+			{!!Form::model($receta,['method'=>'PATCH','route'=>['recetas.update',$receta->id]])!!}
 			{{Form::token()}}
 				<div class="row">
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
 						<div class="form-group">
-							<label for="nombre">Nombre</label>
-							<input type="text" name="nombre" required value="{{$proveedor->nombre}}" class="form-control" placeholder="Nombre...">
+							<label for="indicaciones">Indicaciones</label>
+							<input type="text" name="indicaciones" value="{{$receta->indicaciones}}" class="form-control" placeholder="Indicaciones...">
 						</div>
 					</div>
 
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-						<div class="form-group">
-							<label for="direccion">Direccion</label>
-							<input type="text" name="direccion" value="{{$proveedor->direccion}}" class="form-control" placeholder="Direccion...">
-						</div>
-					</div>
+	    			<div class="form-group">
+	    				<label for="fecha">Fecha</label>
+	    				<input type="date" name="fecha" value="{{$receta->fecha}}" class="form-control">
+	    			</div>
+	    		</div>
 
-					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-						<div class="form-group">
-							<label for="correo">Correo Electronico</label>
-							<input type="text" name="direccion" value="{{$proveedor->correo}}" class="form-control" placeholder="Correo Electronico...">
-						</div>
-					</div>
-
-					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-						<div class="form-group">
-							<label for="num_cuenta">No. Cuenta</label>
-							<input type="text" name="num_cuenta" value="{{$proveedor->num_cuenta}}" class="form-control" placeholder="No. Cuenta...">
-						</div>
-					</div>
-
-					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-						<div class="form-group">
-							<label for="telefono1">telefono No.1</label>
-							<input type="text" name="telefono1" required value="{{$proveedor->telefono1}}" class="form-control" placeholder="Telefono No.1...">
-						</div>
-					</div>
-
-					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-						<div class="form-group">
-							<label for="telefono2">telefono No.2</label>
-							<input type="text" name="telefono2" required value="{{$proveedor->telefono2}}" class="form-control" placeholder="Telefono2...">
-						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							<div class="form-group">
-								<label for="vendedor_id">Vendedor </label>
-								<select data-live-search="true" name="vendedor_id" id="vendedor_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
-									@foreach($vendedores as $ven)
-										<option value="{{$ven->id}}">{{$ven->nombre}}</option>
+								<label for="paciente_id">Paciente </label>
+								<select data-live-search="true" name="paciente_id" id="paciente_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
+									@foreach($pacientes as $pac)
+										<option value="{{$pac->id}}">{{$pac->nombre.' '.$pac->apellido}}</option>
 									@endforeach
 								</select>
+								</div>
 						</div>
 					</div>
+
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="form-group">
+									<label for="doctor">Doctor</label>
+									<select data-live-search="true" name="doctor_id" id="doctor_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
+										@foreach($doctores as $doc)
+											<option value="{{$doc->id}}">{{$doc->nombre.' '.$doc->apellido}}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+						</div>
+
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<div class="form-group">
+										<label for="medicamento">Medicamento</label>
+										<select data-live-search="true" name="medicamento_id" id="medicamento_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
+											@foreach($medicamentos as $med)
+												<option value="{{$med->id}}">{{$med->codigo.' '.$med->nombre}}</option>
+											@endforeach
+										</select>
+									</div>
+								</div>
+							</div>
 
 			</div>
 

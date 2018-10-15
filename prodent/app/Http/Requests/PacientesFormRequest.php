@@ -26,7 +26,7 @@ class PacientesFormRequest extends FormRequest
         return [
           'nombre' => 'required|string|max:255',
           'apellido' => 'required|string|max:255',
-          'genero' => 'required|string|max:45',
+          'genero_id',
           'fecha_nac',
           'direccion' => 'required|string|max:255',
           'telefono' => 'required|string|max:15',

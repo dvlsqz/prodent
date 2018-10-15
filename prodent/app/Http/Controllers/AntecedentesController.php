@@ -21,11 +21,10 @@ class AntecedentesController extends Controller
       $query= trim($request->get('searchText'));
       $antecedentes=DB::table('antecedentes as ant')
       ->join('paciente as pac', 'ant.paciente_id','=','pac.id')
-      ->join('tipo as tip', 'ant.tipo_id','=','tip.id')
-      ->select('ant.id','ant.detalles', 'pac.nombre', 'pac.apellido','tip.tipo')
-      ->where('ant.detalles','LIKE','%'.$query.'%')
-      ->orderBy('pro.id','asc')
-      ->groupBy('ant.id','ant.detalles', 'pac.nombre', 'pac.apellido','tip.tipo')
+      ->select('ant.id','ant.descripcion','ant.tipo', 'pac.nombre', 'pac.apellido')
+      ->where('ant.descripcion','LIKE','%'.$query.'%')
+      ->orderBy('ant.id','asc')
+      ->groupBy('ant.id','ant.descripcion','ant.tipo', 'pac.nombre', 'pac.apellido')
       ->paginate(7);
 
       return view('pacientes_info.antecedentes.index',["antecedentes"=>$antecedentes,"searchText"=>$query]);
@@ -34,35 +33,39 @@ class AntecedentesController extends Controller
 
   public function create(){
     $pacientes=DB::table('paciente')->get();
-    $tipos=DB::table('tipo')->get();
-    return view("pacientes_info.antecedentes.create",["pacientes"=>$pacientes,"tipos"=>$tipos]);
+    return view("pacientes_info.antecedentes.create",["pacientes"=>$pacientes]);
   }
 
   public function store(AntecedentesFormRequest $request /*Request $request*/){
     $antecedente= new Antecedentes;
     $antecedente->id = $request->get('id');
-    $antecedente->detalles = $request->get('detalles');
+    $antecedente->descripcion = $request->get('descripcion');
     $antecedente->paciente_id = $request->get('paciente_id');
-    $antecedente->tipo_id = $request->get('tipo_id');
+    $antecedente->tipo = $request->get('tipo');
 
     $antecedente->save();
     return Redirect::to('pacientes_info/antecedentes/');
   }
 
   public function show($id){
+    $antecedente = DB::table('antecedentes as ant')
+    ->join('paciente as pac', 'ant.paciente_id','=','pac.id')
+    ->select('ant.id','ant.descripcion','ant.tipo', 'pac.nombre', 'pac.apellido')
+    ->where('ant.id','=',$id)->first();
     return view("pacientes_info.antecedentes.show",["antecedente"=>Antecedentes::findOrFail($id)]);
   }
 
   public function edit($id){
-    return view("pacientes_info.antecedentes.edit",["antecedente"=>Antecedentes::findOrFail($id)]);
+    $pacientes=DB::table('paciente')->get();
+    return view("pacientes_info.antecedentes.edit",["antecedente"=>Antecedentes::findOrFail($id),"pacientes"=>$pacientes]);
   }
 
   public function update(AntecedentesFormRequest $request, $id){
 
   $antecedente=Antecedentes::findOrFail($id);
-  $antecedente->detalles = $request->get('detalles');
+  $antecedente->descripcion = $request->get('descripcion');
   $antecedente->paciente_id = $request->get('paciente_id');
-  $antecedente->tipo_id = $request->get('tipo_id');
+  $antecedente->tipo = $request->get('tipo');
   $antecedente->update();
 
   return Redirect::to('pacientes_info/antecedentes/');

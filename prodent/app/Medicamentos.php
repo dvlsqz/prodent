@@ -20,7 +20,6 @@ class Medicamentos extends Model
    'presentacion',
    'precio_costo',
    'precio_venta',
-   'estado',
-   'proveedor_id'
+   'estado'
   ];
 }

@@ -5,8 +5,8 @@
 
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 			<div class="form-group">
-				<label for="detalle">Detalle</label>
-				<input type="text" name="detalles" required value="{{$antecedente->detalles}}" class="form-control" placeholder="Detalle...">
+				<label for="descripcion">Detalle</label>
+				<input type="text" name="descripcion" required value="{{$antecedente->descripcion}}" class="form-control" placeholder="Descripcion...">
 			</div>
 		</div>
 

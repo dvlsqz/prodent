@@ -5,7 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <link rel="shortcut icon" href="imagenes/medical-24_icon-icons.com_73920.ico" />
+
+        <title>Clinica SProdent</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -62,25 +64,25 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+
         </style>
     </head>
-    <body>
+    <body  background="imagenes/sprodentt.png" style="background-repeat:no-repeat; background-position:center; background-size: 100% 100%;" bgproperties="fixed">
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">INICIAR SESION</a>
-                        <!--<a href="{{ route('register') }}">Register</a>-->
+                        <a href="{{ route('login') }}" style="color:white;">INICIAR SESION</a>
+                        <!--<a href="{{ route('register') }}" style="color:white;">Register</a>-->
                     @endauth
                 </div>
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    SISTEMA CLINICA DENTAL PRODENT
-                </div>
+
 
 
 

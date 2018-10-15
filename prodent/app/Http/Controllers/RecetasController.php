@@ -24,7 +24,7 @@ class RecetasController extends Controller
       ->join('paciente as pac', 'rec.paciente_id','=','pac.id')
       ->join('medicamento as med', 'rec.medicamento_id','=','med.id')
       ->join('doctor as doc', 'rec.doctor_id','=','doc.id')
-      ->select('rec.id','rec.prescripción','rec.indicaciones', 'rec.fecha', DB::raw("pac.nombre AS nombre_paciente"),DB::raw("pac.apellido AS apellido_paciente"), 'med.codigo', DB::raw("med.nombre AS medicamento"), 'doc.nombre', 'doc.apellido')
+      ->select('rec.id','rec.indicaciones', 'rec.fecha', DB::raw("pac.nombre AS nombre_paciente"),DB::raw("pac.apellido AS apellido_paciente"), 'med.codigo', DB::raw("med.nombre as medicamento"), 'doc.nombre', 'doc.apellido')
       ->where('rec.fecha','LIKE','%'.$query.'%')
       ->orderBy('rec.id','asc')
       ->paginate(7);
@@ -43,7 +43,6 @@ class RecetasController extends Controller
   public function store(RecetasFormRequest $request /*Request $request*/){
     $receta= new Recetas;
     $receta->id = $request->get('id');
-    $receta->prescripción = $request->get('prescripción');
     $receta->indicaciones = $request->get('indicaciones');
     $receta->fecha = $request->get('fecha');
     $receta->paciente_id = $request->get('paciente_id');
@@ -58,13 +57,15 @@ class RecetasController extends Controller
     return view("recetas.show",["receta"=>Recetas::findOrFail($id)]);
   }
   public function edit($id){
-    return view("recetas.edit",["receta"=>Recetas::findOrFail($id)]);
+    $pacientes=DB::table('paciente')->get();
+    $medicamentos=DB::table('medicamento')->get();
+    $doctores=DB::table('doctor')->get();
+    return view("recetas.edit",["receta"=>Recetas::findOrFail($id),"pacientes"=>$pacientes, "medicamentos"=>$medicamentos, "doctores"=>$doctores]);
   }
 
   public function update(RecetasFormRequest $request, $id){
 
     $receta=Recetas::findOrFail($id);
-    $receta->prescripción = $request->get('prescripción');
     $receta->indicaciones = $request->get('indicaciones');
     $receta->direccion = $request->get('fecha');
     $receta->paciente_id = $request->get('paciente_id');
@@ -86,10 +87,11 @@ class RecetasController extends Controller
       ->join('paciente as pac', 'rec.paciente_id','=','pac.id')
       ->join('medicamento as med', 'rec.medicamento_id','=','med.id')
       ->join('doctor as doc', 'rec.doctor_id','=','doc.id')
-      ->select('rec.prescripción','rec.indicaciones', 'rec.fecha', 'pac.nombre','pac.apellido', 'med.codigo', 'med.nombre', 'doc.nombre', 'doc.apellido')->where('rec.id','=',$id)->first();
+      ->select('rec.indicaciones', 'rec.fecha', DB::raw('pac.nombre as nombre_paciente'),DB::raw('pac.apellido as apellido_paciente'), DB::raw('med.nombre as medicamento'))
+      ->where('rec.id','=',$id)->first();
 
       $pdf = PDF::loadView('recetas.print', compact('receta'))->setPaper('oficio', 'portrait')->setWarnings(false)->save('receta.pdf');
-      return $pdf->stream('Receta.pdf');
+      return $pdf->stream('receta.pdf');
     }
 
 

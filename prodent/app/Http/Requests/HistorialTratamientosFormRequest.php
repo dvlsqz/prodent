@@ -24,12 +24,8 @@ class HistorialTratamientosFormRequest extends FormRequest
     public function rules()
     {
         return [
-          'fecha_inicio',
-          'fecha_culminacion',
-          'abono' => 'required|string|max:45',
-          'estado' => 'required|string|max:45',
+          'fecha'
           'detalles',
-          'paciente_id',
           'tratamiento_id',
         ];
     }

@@ -21,11 +21,11 @@ class ResponsablesController extends Controller
       $query= trim($request->get('searchText'));
       $responsables=DB::table('responsable as res')
       ->join('paciente as pac', 'res.paciente_id','=','pac.id')
-      ->select('res.id','res.nombre','res.apellido','res.parentesco','res.edad', 'res.direccion', 'res.telefono','pac.nombre','pac.apellido')
+      ->join('genero as gen', 'res.genero_id','=','gen.id')
+      ->select('res.id','res.nombre','res.apellido','res.parentesco','res.fecha_nac', 'res.direccion', 'res.telefono',DB::raw('pac.nombre as nombre_paciente'),DB::raw('pac.apellido as apellido_paciente'), DB::raw('gen.genero as genero'))
       ->where('res.nombre','LIKE','%'.$query.'%')
       ->orderBy('res.id','asc')
-      ->groupBy('res.id','res.nombre','res.apellido','res.parentesco','res.edad', 'res.direccion', 'res.telefono','pac.nombre','pac.apellido')
-      ->paginate(7);
+      ->paginate(10);
 
       return view('pacientes_info.responsables.index',["responsables"=>$responsables,"searchText"=>$query]);
     }
@@ -33,7 +33,8 @@ class ResponsablesController extends Controller
 
   public function create(){
     $pacientes=DB::table('paciente')->get();
-    return view("pacientes_info.responsables.create",["pacientes"=>$pacientes]);
+    $generos=DB::table('genero')->get();
+    return view("pacientes_info.responsables.create",["pacientes"=>$pacientes,"generos"=>$generos]);
   }
 
   public function store(ResponsablesFormRequest $request /*Request $request*/){
@@ -41,35 +42,46 @@ class ResponsablesController extends Controller
     $responsable->id = $request->get('id');
     $responsable->nombre = $request->get('nombre');
     $responsable->apellido = $request->get('apellido');
-    $responsable->edad = $request->get('edad');
+    $responsable->parentesco = $request->get('parentesco');
+    $responsable->fecha_nac = $request->get('fecha_nac');
     $responsable->direccion = $request->get('direccion');
     $responsable->telefono = $request->get('telefono');
     $responsable->paciente_id = $request->get('paciente_id');
+    $responsable->genero_id = $request->get('genero_id');
 
-    $proveedor->save();
+    $responsable->save();
     return Redirect::to('pacientes_info/responsables/');
   }
 
   public function show($id){
+    $responsable = DB::table('responsable as res')
+    ->join('paciente as pac', 'res.paciente_id','=','pac.id')
+    ->join('genero as gen', 'res.genero_id','=','gen.id')
+    ->select('res.id','res.nombre','res.apellido','res.parentesco','res.fecha_nac', 'res.direccion', 'res.telefono',DB::raw('pac.nombre as nombre_paciente'),DB::raw('pac.apellido as apellido_paciente'), DB::raw('gen.genero as genero'))
+    ->where('res.id','=',$id)->first();
     return view("pacientes_info.responsables.show",["responsable"=>Responsables::findOrFail($id)]);
   }
 
   public function edit($id){
-    return view("pacientes_info.responsables.edit",["responsable"=>Responsables::findOrFail($id)]);
+    $pacientes=DB::table('paciente')->get();
+    $generos=DB::table('genero')->get();
+    return view("pacientes_info.responsables.edit",["responsable"=>Responsables::findOrFail($id), "pacientes"=>$pacientes,"generos"=>$generos]);
   }
 
   public function update(ResponsablesFormRequest $request, $id){
 
-  $responsable=Responsables::findOrFail($id);
-  $responsable->nombre = $request->get('nombre');
-  $responsable->apellido = $request->get('apellido');
-  $responsable->edad = $request->get('edad');
-  $responsable->direccion = $request->get('direccion');
-  $responsable->telefono = $request->get('telefono');
-  $responsable->paciente_id = $request->get('paciente_id');
-  $responsable->update();
+    $responsable=Responsables::findOrFail($id);
+    $responsable->nombre = $request->get('nombre');
+    $responsable->apellido = $request->get('apellido');
+    $responsable->parentesco = $request->get('parentesco');
+    $responsable->fecha_nac = $request->get('fecha_nac');
+    $responsable->direccion = $request->get('direccion');
+    $responsable->telefono = $request->get('telefono');
+    $responsable->paciente_id = $request->get('paciente_id');
+    $responsable->genero_id = $request->get('genero_id');
+    $responsable->update();
 
-  return Redirect::to('pacientes_info/responsables');
+    return Redirect::to('pacientes_info/responsables');
   }
 
   public function destroy($id){

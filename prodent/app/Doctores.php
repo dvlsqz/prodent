@@ -15,6 +15,8 @@ class Doctores extends Model
    'nombre',
    'apellido',
    'direccion',
-   'users_id'
+   'fecha_nac',
+   'users_id',
+   'genero_id'
   ];
 }

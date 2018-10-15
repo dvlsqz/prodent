@@ -20,12 +20,10 @@ class HistorialTratamientosController extends Controller
     if($request){
       $query= trim($request->get('searchText'));
       $historiales=DB::table('historial_tratamiento as hist')
-      ->join('paciente as pac', 'hist.paciente_id','=','pac.id')
       ->join('tratamiento as tra', 'hist.tratamiento_id','=','tra.id')
-      ->select('hist.id','hist.fecha_inicio','hist.fecha_culminacion','hist.abono','hist.estado','hist.detalles', 'pac.nombre', 'pac.apellido', 'tra.nombre')
+      ->select('hist.id','hist.fecha','hist.detalles',DB::raw('tra.nombre as tratamiento'))
       ->where('hist.detalles','LIKE','%'.$query.'%')
       ->orderBy('hist.id','asc')
-      ->groupBy('hist.id','hist.fecha_inicio','hist.fecha_culminacion','hist.abono','hist.estado','hist.detalles', 'pac.nombre', 'pac.apellido', 'tra.nombre')
       ->paginate(7);
 
       return view('pacientes_info.his_tratamientos.index',["historiales"=>$historiales,"searchText"=>$query]);
@@ -33,20 +31,15 @@ class HistorialTratamientosController extends Controller
   }
 
   public function create(){
-    $pacientes=DB::table('paciente')->get();
     $tratamientos=DB::table('tratamiento')->get();
-    return view("pacientes_info.his_tratamientos.create",["pacientes"=>$pacientes,"tratamientos"=>$tratamientos]);
+    return view("pacientes_info.his_tratamientos.create",["tratamientos"=>$tratamientos]);
   }
 
   public function store(HistorialTratamientosFormRequest $request /*Request $request*/){
     $historial= new HistorialTratamientos;
     $historial->id = $request->get('id');
-    $historial->fecha_inicio = $request->get('fecha_inicio');
-    $historial->fecha_culminacion = $request->get('fecha_culminacion');
-    $historial->abono = $request->get('abono');
-    $historial->estado = $request->get('estado');
+    $historial->fecha = $request->get('fecha');
     $historial->detalles = $request->get('detalles');
-    $historial->paciente_id = $request->get('paciente_id');
     $historial->tratamiento_id = $request->get('tratamiento_id');
 
     $historial->save();
@@ -54,22 +47,23 @@ class HistorialTratamientosController extends Controller
   }
 
   public function show($id){
+    $historial=DB::table('historial_tratamiento as hist')
+    ->join('tratamiento as tra', 'hist.tratamiento_id','=','tra.id')
+    ->select('hist.id','hist.fecha','hist.detalles',DB::raw('tra.nombre as tratamiento'))
+    ->where('tra.id','=',$id)->first();
     return view("pacientes_info.his_tratamientos.show",["historial"=>HistorialTratamientos::findOrFail($id)]);
   }
 
   public function edit($id){
-    return view("pacientes_info.his_tratamientos.edit",["historial"=>HistorialTratamientos::findOrFail($id)]);
+    $tratamientos=DB::table('tratamiento')->get();
+    return view("pacientes_info.his_tratamientos.edit",["historial"=>HistorialTratamientos::findOrFail($id),"tratamientos"=>$tratamientos]);
   }
 
   public function update(HistorialTratamientosFormRequest $request, $id){
 
   $historial=HistorialTratamientos::findOrFail($id);
-  $historial->fecha_inicio = $request->get('fecha_inicio');
-  $historial->fecha_culminacion = $request->get('fecha_culminacion');
-  $historial->abono = $request->get('abono');
-  $historial->estado = $request->get('estado');
+  $historial->fecha = $request->get('fecha');
   $historial->detalles = $request->get('detalles');
-  $historial->paciente_id = $request->get('paciente_id');
   $historial->tratamiento_id = $request->get('tratamiento_id');
   $historial->update();
 

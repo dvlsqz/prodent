@@ -30,7 +30,6 @@ class ProveedoresFormRequest extends FormRequest
           'num_cuenta' => 'required|string|max:255',
           'telefono1' => 'required|string|max:15',
           'telefono2' => 'required|string|max:15',
-          'vendedor_id',
         ];
     }
 }
