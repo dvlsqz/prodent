@@ -39,7 +39,7 @@
 						<label for="tratamiento_id">Tratamiento </label>
 						<select data-live-search="true" name="tratamiento_id" id="tratamiento_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($tratamientos as $tra)
-								<option value="{{$tra->id}}">{{$tra->nombe}}</option>
+								<option value="{{$tra->id}}">{{$tra->nombre}}</option>
 							@endforeach
 						</select>
 					</div>

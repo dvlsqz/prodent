@@ -23,10 +23,10 @@ class HistorialTratamientosFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-          'fecha'
-          'detalles',
-          'tratamiento_id',
-        ];
+      return [
+        'fecha',
+        'detalles',
+        'tratamiento_id',
+      ];
     }
 }

@@ -16,7 +16,8 @@
 					<th>Tipo</th>
 					<th>Detalle</th>
 					<th>Paciente</th>
-					<th>Precio</th>
+					<th>Precio | Situacion</th>
+					<th>Saldo Actual</th>
 					<th>Opciones</th>
 				</thead>
 
@@ -25,8 +26,9 @@
             <td>{{$tra->nombre}}</td>
 						<td>{{$tra->tipo}}</td>
 						<td>{{$tra->detalle}}</td>
-						<td>{{$tra->nombre_paciente.' '.$$tra->apellido_paciente}}</td>
-						<td>{{$tra->precio}}</td>
+						<td>{{$tra->nombre_paciente.' '.$tra->apellido_paciente}}</td>
+						<td>{{$tra->precio}} | @if ($tra->saldo_actual == $tra->precio) Sin Abonar @elseif ($tra->saldo_actual == 0) Pagado @else Abonando @endif</td>
+						<td>{{$tra->saldo_actual}}</td>
 						<td>
 							<a href="{{URL::action('TratamientosController@edit',$tra->id)}}">
 								<button class="btn btn-info btn-large icon-edit"></button>

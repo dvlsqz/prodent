@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class HistorialCitasFormRequest extends FormRequest
+class PagosFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,9 @@ class HistorialCitasFormRequest extends FormRequest
     public function rules()
     {
         return [
-          'descripcion' => 'required|string|max:255',
-          'diagnostico'=> 'required|string|max:255',
-          'paciente_id',
-          'tratamiento_id',
-          'cita_id'
+          'saldo',
+          'fecha',
+          'tratamiento_id'
         ];
     }
 }

@@ -21,7 +21,7 @@ class TratamientosController extends Controller
       $query= trim($request->get('searchText'));
       $tratamientos=DB::table('tratamiento as tra')
       ->join('paciente as pac', 'tra.paciente_id','=','pac.id')
-      ->select('tra.id','tra.nombre', 'tra.tipo', 'tra.detalle','tra.fecha_inicio','tra.fecha_fin','tra.precio','tra.estado',DB::raw('pac.nombre as nombre_paciente'),DB::raw('pac.apellido as apellido_paciente'))
+      ->select('tra.id','tra.nombre', 'tra.tipo', 'tra.detalle','tra.fecha_inicio','tra.fecha_fin','tra.precio','tra.saldo_actual','tra.estado',DB::raw('pac.nombre as nombre_paciente'),DB::raw('pac.apellido as apellido_paciente'))
       ->where('tra.nombre','LIKE','%'.$query.'%')
       ->orderBy('tra.id','asc')
       ->paginate(7);
@@ -44,6 +44,7 @@ public function store(TratamientosFormRequest $request /*Request $request*/){
     $tratamiento->fecha_inicio= $request->get('fecha_inicio');
     $tratamiento->fecha_fin = $request->get('fecha_fin');
     $tratamiento->precio = $request->get('precio');
+    $tratamiento->saldo_actual = $request->get('precio');
     $tratamiento->estado = $request->get('estado');
     $tratamiento->paciente_id = $request->get('paciente_id');
 
@@ -54,7 +55,7 @@ public function store(TratamientosFormRequest $request /*Request $request*/){
   public function show($id){
     $tratamiento = DB::table('tratamiento as tra')
     ->join('paciente as pac', 'tra.paciente_id','=','pac.id')
-    ->select('tra.id','tra.nombre', 'tra.tipo', 'tra.detalle','tra.fecha_inicio','tra.fecha_fin','tra.precio','tra.estado',DB::raw('pac.nombre as nombre_paciente'),DB::raw('pac.apellido as apellido_paciente'))
+    ->select('tra.id','tra.nombre', 'tra.tipo', 'tra.detalle','tra.fecha_inicio','tra.fecha_fin','tra.precio','tra.saldo_actual','tra.estado',DB::raw('pac.nombre as nombre_paciente'),DB::raw('pac.apellido as apellido_paciente'))
     ->where('pac.id','=',$id)->first();
     return view("tratamientos.show",["tratamiento"=>Tratamientos::findOrFail($id)]);
   }

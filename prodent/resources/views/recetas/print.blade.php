@@ -134,7 +134,7 @@
             <div id="Firma"><img src="images/Firma.png"></div>
             <div id="Rp">
               <SPAN style="position: absolute; top: 0 px; left: 100 px;">{{$receta->medicamento}}</span>
-              <p style="position: absolute; top: 10 px; left: 5 px;">{{$receta->indicaciones}}</p>
+              <p style="position: absolute; top: 10 px; left: 100 px;">{{$receta->indicaciones}}</p>
               <img src="images/Rp.png">
             </div>
         </div>

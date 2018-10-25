@@ -22,8 +22,8 @@
         @foreach($historiales as $hisc)
 					<tr>
 						<td>{{$hisc->descripcion}}</td>
-						<td>{{$hisc->nombre.''.$hisc->apellido}}</td>
-						<td>{{$hisc->detalle}}</td>
+						<td>{{$hisc->nombre_paciente.''.$hisc->apellido_paciente}}</td>
+						<td>{{$hisc->descripcion}}</td>
 						<td>{{$hisc->fecha_cita}}</td>
 						<td>
 							<a href="{{URL::action('HistorialCitasController@edit',$hisc->id)}}">

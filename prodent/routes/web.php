@@ -32,6 +32,17 @@ Route::resource('pacientes_info/antecedentes','AntecedentesController');
 Route::resource('pacientes_info/his_citas','HistorialCitasController');
 Route::resource('pacientes_info/his_tratamientos','HistorialTratamientosController');
 Route::resource('pacientes_info/responsables','ResponsablesController');
+//Rutas modulo de compras y ventas
+Route::resource('medicamentos_cv/compras','CompraController');
+Route::resource('medicamentos_cv/ventas','ReciboController');
 //Rutas modulo de recetas
 Route::resource('recetas','RecetasController');
 Route::get('views/recetas/{id}', 'RecetasController@print');
+//Rutas modulo de reportes
+Route::resource('reportes', 'ReportesController');
+Route::get('views/reportes/medicamentos_vencer', 'ReportesController@rpvmedicamentos');
+Route::get('views/reportes/medicamentos', 'ReportesController@reportemedicamentos');
+Route::get('views/reportes/medicamentosStockMinimo', 'ReportesController@smmedicamentos');
+Route::get('views/reportes/medicamentosSinStock', 'ReportesController@semedicamentos');
+//Rutas modulo de pagos
+Route::resource('pagos','PagosController');

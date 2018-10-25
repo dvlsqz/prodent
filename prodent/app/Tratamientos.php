@@ -18,6 +18,7 @@ class Tratamientos extends Model
     'fecha_inicio',
     'fecha_fin',
     'precio',
+    'saldo_actual',
     'estado',
     'paciente_id'
   ];

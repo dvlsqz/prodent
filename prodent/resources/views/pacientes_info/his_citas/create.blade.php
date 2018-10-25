@@ -29,6 +29,13 @@
 
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
+						<label for="diagnostico">Diagnostico</label>
+						<input type="text" name="diagnostico" required value="{{old('diagnostico')}}" class="form-control" placeholder="Diagnostico...">
+					</div>
+				</div>
+
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
 						<label for="paciente_id">Paciente </label>
 						<select data-live-search="true" name="paciente_id" id="paciente_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($pacientes as $pac)
@@ -43,7 +50,7 @@
 						<label for="tratamiento_id">Tratamiento </label>
 						<select data-live-search="true" name="tratamiento_id" id="tratamiento_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
 							@foreach($tratamientos as $tra)
-								<option value="{{$tra->id}}">{{$tra->nombe}}</option>
+								<option value="{{$tra->id}}">{{$tra->nombre}}</option>
 							@endforeach
 						</select>
 					</div>
@@ -51,10 +58,10 @@
 
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="form-group">
-						<label for="agenda_id">Fecha Cita </label>
-						<select data-live-search="true" name="agenda_id" id="agenda_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
-							@foreach($agendas as $age)
-								<option value="{{$age->id}}">{{$age->fecha_cita}}</option>
+						<label for="cita_id">Fecha Cita </label>
+						<select data-live-search="true" name="cita_id" id="cita_id" class="form-control selectpicker" <script src="{{asset('js/bootstrap.min.js')}}"></script>>
+							@foreach($citas as $ci)
+								<option value="{{$ci->id}}">{{$ci->fecha_cita}}</option>
 							@endforeach
 						</select>
 					</div>

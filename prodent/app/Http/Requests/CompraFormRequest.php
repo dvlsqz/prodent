@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class HistorialCitasFormRequest extends FormRequest
+class CompraFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,18 @@ class HistorialCitasFormRequest extends FormRequest
     public function rules()
     {
         return [
-          'descripcion' => 'required|string|max:255',
-          'diagnostico'=> 'required|string|max:255',
-          'paciente_id',
-          'tratamiento_id',
-          'cita_id'
+          'num_lote',
+          'fecha',
+          'total',
+          'detalles'  => 'required|string|max:255',
+          'doctor_id',
+          'forma_pago_id',
+          'cantidad',
+          'precio',
+          'subtotal',
+          'medicamento_id',
+          'compra_id',
+          'proveedor_id'
         ];
     }
 }

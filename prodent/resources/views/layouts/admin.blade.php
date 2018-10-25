@@ -100,8 +100,8 @@
         </li>
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-th"></i><span>MEDICAMENTOS</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="{{url('medicamentos/compras')}}">COMPRA</a></li>
-            <li><a href="{{url('medicamentos/ventas')}}">VENTA</a></li>
+            <li><a href="{{url('medicamentos_cv/compras')}}">COMPRA</a></li>
+            <li><a href="{{url('medicamentos_cv/ventas')}}">VENTA</a></li>
           </ul>
         </li>
         <li><a href="{{url('citas/')}}"><i class="icon-calendar"></i><span>CITAS</span> </a> </li>

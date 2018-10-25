@@ -30,7 +30,8 @@ class TratamientosFormRequest extends FormRequest
           'fecha_inicio',
           'fecha_fin',
           'precio',
-          'estado'
+          'saldo_actual',
+          'estado',
           'paciente_id'
         ];
     }

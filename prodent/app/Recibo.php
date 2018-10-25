@@ -4,18 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HistorialCitas extends Model
+class Recibo extends Model
 {
-  protected $table='historial_cita';
+  protected $table='recibo';
   protected $primaryKey='id';
 
   public $timestamps =false;
 
   protected $fillable = [
-    'descripcion',
-    'diagnostico',
+    'serie',
+    'fecha',
+    'descuento',
+    'total',
+    'detalles',
+    'estado',
     'paciente_id',
-    'tratamiento_id',
-    'cita_id'
+    'forma_pago_id'
   ];
 }
