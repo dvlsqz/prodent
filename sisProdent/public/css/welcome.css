@@ -1,0 +1,33 @@
+.bg-header{
+    height: 380px;
+    background-position: top center;
+}
+
+.bg-header .container{
+    padding-top: 15vh;
+}
+
+.description-p{
+    margin: 10px auto 0;
+    max-width: 600px;
+}
+
+/* Centrar Modal */
+.modal {
+    text-align: center;
+    padding: 0!important;
+}
+  
+.modal:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
+}
+  
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
