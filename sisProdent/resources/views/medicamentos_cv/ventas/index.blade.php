@@ -23,12 +23,6 @@
 						<td>{{$ven->forma_pago}}</td>
 						<td>
 
-							<a href="{{URL::action('ReciboController@show',$ven->id)}}">
-								<button class="btn btn-info btn-sm" title="Ver">
-									<i class="material-icons">visibility</i>
-									Ver
-								</button>
-							</a>
 
 							<a href="{{URL::action('ReciboController@print',$ven->id)}}">
 								<button class="btn btn-sm" title="Imprimir">

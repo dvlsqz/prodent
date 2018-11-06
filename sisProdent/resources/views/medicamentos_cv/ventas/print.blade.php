@@ -200,10 +200,6 @@
 	<body>
 		<div id="background">
 			<div id="Fondo"><img src="images/recibo/Fondo.png"></div>
-			<div id="Capa1"><img src="images/recibo/Capa1.png">
-				<SPAN style="position: absolute; top: 18 px; left: 200 px;">{{$venta->fecha}}</span>
-				<SPAN style="position: absolute; top: 16 px; left: 525  px;">{{$venta->serie}}</span>
-			</div>
 			<div id="Fecha"><img src="images/recibo/Fecha.png"></div>
 			<div id="ReciboNo"><img src="images/recibo/ReciboNo.png"></div>
 			<div id="Rectnguloredondeado2"><img src="images/recibo/Rectnguloredondeado2.png"></div>
@@ -219,6 +215,15 @@
 			<div id="Estado"><img src="images/recibo/Estado.png"></div>
 			<div id="Detalles"><img src="images/recibo/Detalles.png"></div>
 			<div id="Firma"><img src="images/recibo/Firma.png"></div>
+		</div>
+		<div id="Capa1"><img src="images/recibo/Capa1.png">
+			<SPAN style="position: absolute; top: 18 px; left: 200 px;">{{$venta->fecha}}</span>
+			<SPAN style="position: absolute; top: 22 px; left: 600  px;">{{$venta->serie}}</span>
+			<span style="position: absolute; top: 60 px; left: 300  px;">{{$venta->nombre_paciente.''.$venta->apellido_paciente}}</span>
+			<span style="position: absolute; top: 105 px; left: 220  px;">Ninguno</span>
+			<span style="position: absolute; top: 105 px; left: 600  px;">Q.@foreach($detalles as $dt){{$dt->cantidad*$dt->precio}}@endforeach</span>
+			<span style="position: absolute; top: 150 px; left: 220  px;">Cancelado</span>
+			<span style="position: absolute; top: 200 px; left: 200  px;">@foreach($detalles as $dt){{$dt->medicamento}}@endforeach</span>
 		</div>
  </body>
  </html>

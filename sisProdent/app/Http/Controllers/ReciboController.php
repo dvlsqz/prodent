@@ -96,7 +96,7 @@ public function store(ReciboFormRequest $request /*Request $request*/){
       ->where('reb.id','=',$id)->first();
     $detalles = DB::table('detalle_recibo as dr')
       ->join('medicamento as med','dr.medicamento_id','=','med.id')
-      ->join('paciente as pac', 'reb.paciente_id','=','pac.id')
+      ->join('paciente as pac', 'dr.paciente_id','=','pac.id')
       ->select('dr.cantidad','dr.precio',DB::raw('med.nombre as medicamento'),  DB::raw('pac.nombre as nombre_paciente'),DB::raw('pac.apellido as apellido_paciente'))
       ->where('dr.recibo_id','=',$id)->get();
     return view("medicamentos_cv.ventas.show",["compra"=>$compra,"detalles"=>$detalles]);
@@ -117,8 +117,12 @@ public function store(ReciboFormRequest $request /*Request $request*/){
       ->join('detalle_recibo as dr', 'reb.id','=','dr.id')
       ->select('reb.id','reb.serie', 'reb.fecha','reb.detalles',DB::raw('pac.nombre as nombre_paciente'),DB::raw('pac.apellido as apellido_paciente'), DB::raw('fp.forma as forma_pago'))
       ->where('reb.id','=',$id)->first();
+      $detalles = DB::table('detalle_recibo as dr')
+        ->join('medicamento as med','dr.medicamento_id','=','med.id')
+        ->select('dr.cantidad','dr.precio',DB::raw('med.nombre as medicamento'))
+        ->whereRaw("dr.recibo_id= ({$id})")->get();
 
-      $pdf = PDF::loadView('medicamentos_cv.ventas.print', compact('venta'))->setPaper('oficio', 'portrait')->setWarnings(false)->save('recibo.pdf');
+      $pdf = PDF::loadView('medicamentos_cv.ventas.print', compact('venta','detalles'))->setPaper('oficio', 'portrait')->setWarnings(false)->save('recibo.pdf');
       return $pdf->stream('recibo.pdf');
     }
 }

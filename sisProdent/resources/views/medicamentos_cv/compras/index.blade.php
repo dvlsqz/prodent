@@ -23,12 +23,6 @@
 						<td>{{$com->forma_pago}}</td>
 						<td>
 
-							<a href="{{URL::action('CompraController@show',$com->id)}}">
-								<button class="btn btn-info btn-sm" title="Ver">
-									<i class="material-icons">visibility</i>
-									Ver
-								</button>
-							</a>
 
 							<a href="" data-target="#modal-delete-{{$com->id}}" data-toggle="modal">
 								<button class="btn btn-danger btn-sm" title="Eliminar">
