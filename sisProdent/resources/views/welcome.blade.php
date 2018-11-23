@@ -28,7 +28,7 @@
                     </button>
                     <a class="navbar-brand" href="#">SProdent</a>
                 </div>
-    
+
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         @auth
@@ -72,21 +72,19 @@
                     </div>
                     <div class="col-xs-12 col-md-12">
                         <h4 class="title text-center">Misión</h4>
-                        <p class="description-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quaerat a distinctio ea harum, culpa dicta doloremque ab quos! Corporis blanditiis omnis nostrum natus esse magni cumque ipsa iusto quam.
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat suscipit eligendi, delectus quasi voluptatibus iste molestias. Mollitia rerum esse aspernatur numquam nostrum voluptatibus pariatur ipsam sunt nobis enim. Necessitatibus, libero.
+                        <p class="description-p">Brindar servicio dental integral y especializado de calidad con profesionales de alto nivel comprometidos con el cuidado de la salud bucal para lograr la satisfacción y fidelización de nuestros pacientes.
                         </p>
                         <hr />
                     </div>
                     <div class="col-xs-12 col-md-12">
                         <h4 class="title text-center">Visión</h4>
-                        <p class="description-p">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam, id, facilis blanditiis modi cumque sunt cum nam iure tenetur, ratione voluptatum commodi consequatur repudiandae temporibus nobis nihil quis qui impedit.
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, illum quas culpa perspiciatis reiciendis libero rem ea saepe magnam fugiat nemo distinctio debitis ducimus ab accusantium sit dolores! Dicta, molestiae.
+                        <p class="description-p">Ser la mejor clínica dental a nivel local, reconocida por su calidad de servicio, tecnología de punta y atención personalizada.
                         </p>
                         <br>
                     </div>
                 </div>
             </div>
-        </div>   
+        </div>
 
         <!-- Footer Principal -->
         <footer class="footer">
